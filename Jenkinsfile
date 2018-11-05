@@ -2,7 +2,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE_NAME = "daksha006/javaprjctapp"
+        DOCKER_IMAGE_NAME = "daksha006/javaprjct"
     }
     stages {
         stage('Build Docker Image') {

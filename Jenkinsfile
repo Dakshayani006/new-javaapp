@@ -38,7 +38,7 @@ pipeline {
             }
         }
 
-      stage('Rollback') {
+      stage('RollBack') {
           steps {
              script {
                 sh 'kubectl rollout undo --dry-run=true deployment/test'

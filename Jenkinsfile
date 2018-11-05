@@ -21,5 +21,13 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+        stage('RollBack') {
+          steps {
+             script {
+                sh 'kubectl rollout undo deployment/test'
+         }
+       }
+     }
+
     }
 }

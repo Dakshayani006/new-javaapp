@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'docker build -t javatestapp:v2 .'
+                sh 'docker build -t javatestapp:v1 .'
                 sh 'kubectl create deployment app --image=javatestapp:v2'
               sh 'sudo kubectl expose deployment app --type=LoadBalancer --port=8080'
             }

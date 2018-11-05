@@ -1,0 +1,201 @@
+Script started on Fri 02 Nov 2018 12:07:09 PM UTC
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+                        app.push("${env.BUILD_NUMBER}")
+                        app.push("latest")
+                       }
+                }
+            }
+        }
+        stage('DeployToProduction') {
+            steps {
+                input 'Deploy to Dev Environment?'
+                milestone(1)
+                kubernetesDeploy(
+                    credentialsType: 'KubeConfig',
+                    kubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config'],
+                    configs: 'train-schedule-kube.yml',
+                    enableConfigSubstitution: true
+                )
+            }
+        }
+    }
+}]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$                     docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+bash: syntax error near unexpected token `'https://registry.hub.docker.com','
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$                         app.push("${env.BUILD_NUMBER}")
+bash: syntax error near unexpected token `"${env.BUILD_NUMBER}"'
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$                         app.push("latest")
+bash: syntax error near unexpected token `"latest"'
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$                        }
+bash: syntax error near unexpected token `}'
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$                 }
+bash: syntax error near unexpected token `}'
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$             }
+bash: syntax error near unexpected token `}'
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$         }
+bash: syntax error near unexpected token `}'
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$         stage('DeployToProduction') {
+bash: syntax error near unexpected token `'DeployToProduction''
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$             steps {
+No command 'steps' found, did you mean:
+ Command 'step' from package 'step' (universe)
+steps: command not found
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$                 input 'Deploy to Dev Environment?'
+The program 'input' is currently not installed. You can install it by typing:
+sudo apt install yagiuda
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$                 milestone(1)
+bash: syntax error near unexpected token `1'
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$                 kubernetesDeploy(
+bash: syntax error near unexpected token `newline'
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$                     credentialsType: 'KubeConfig',
+credentialsType:: command not found
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$                     kubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config'],
+kubeConfig:: command not found
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$                     configs: 'train-schedule-kube.yml',
+configs:: command not found
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$                     enableConfigSubstitution: true
+enableConfigSubstitution:: command not found
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$                 )
+bash: syntax error near unexpected token `)'
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$             }
+bash: syntax error near unexpected token `}'
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$         }
+bash: syntax error near unexpected token `}'
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$     }
+bash: syntax error near unexpected token `}'
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ }
+bash: syntax error near unexpected token `}'
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ d[Ksudo docje[K[Kker images
+REPOSITORY                                         TAG                 IMAGE ID            CREATED             SIZE
+registry.hub.docker.com/daksha006/train-schedule   12                  8e41c39ee80e        5 minutes ago       401MB
+registry.hub.docker.com/daksha006/train-schedule   13                  8e41c39ee80e        5 minutes ago       401MB
+registry.hub.docker.com/daksha006/train-schedule   latest              8e41c39ee80e        5 minutes ago       401MB
+daksha006/train-schedule                           13                  8e41c39ee80e        5 minutes ago       401MB
+daksha006/train-schedule                           latest              8e41c39ee80e        5 minutes ago       401MB
+registry.hub.docker.com/daksha006/javakapp         9                   cf1ff923c1a8        42 minutes ago      401MB
+registry.hub.docker.com/daksha006/javakapp         latest              cf1ff923c1a8        42 minutes ago      401MB
+daksha006/javakapp                                 9                   cf1ff923c1a8        42 minutes ago      401MB
+daksha006/javakapp                                 latest              cf1ff923c1a8        42 minutes ago      401MB
+javatestapp                                        v2                  2f51903ee7a4        7 hours ago         401MB
+javaprjct                                          v1                  818f76b131ca        7 hours ago         355MB
+maven                                              3.5-jdk-8-alpine    fb4bb0d89941        8 days ago          119MB
+k8s.gcr.io/kube-proxy                              v1.12.2             15e9da1ca195        9 days ago          96.5MB
+k8s.gcr.io/kube-apiserver                          v1.12.2             51a9c329b7c5        9 days ago          194MB
+k8s.gcr.io/kube-controller-manager                 v1.12.2             15548c720a70        9 days ago          164MB
+k8s.gcr.io/kube-scheduler                          v1.12.2             d6d57c76136c        9 days ago          58.3MB
+k8s.gcr.io/etcd                                    3.2.24              3cab8e1b9802        6 weeks ago         220MB
+k8s.gcr.io/coredns                                 1.2.2               367cdc8433a4        2 months ago        39.2MB
+k8s.gcr.io/kubernetes-dashboard-amd64              v1.10.0             0dab2435c100        2 months ago        122MB
+quay.io/calico/node                                v3.1.3              7eca10056c8e        5 months ago        248MB
+quay.io/calico/cni                                 v3.1.3              9f355e076ea7        5 months ago        68.8MB
+k8s.gcr.io/pause                                   3.1                 da86e6ba6ca1        10 months ago       742kB
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ d[Ksudo docker rmi -f 8e41c39ee80e
+Error response from daemon: conflict: unable to delete 8e41c39ee80e (cannot be forced) - image is being used by running container 9e6838b8827a
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ docker [1@s[1@u[C[1@d[1@o[1@ [C[C[C[C[C[C[Cps -a
+CONTAINER ID        IMAGE                                   COMMAND                  CREATED              STATUS                     PORTS               NAMES
+9e6838b8827a        daksha006/train-schedule                "/usr/local/bin/mvn-…"   About a minute ago   Up About a minute                              k8s_test_test-6489b6c5dd-x7gd7_default_b58c801c-de97-11e8-b1d5-02a12ea6f582_0
+dc10dfba5ed6        k8s.gcr.io/pause:3.1                    "/pause"                 About a minute ago   Up About a minute                              k8s_POD_test-6489b6c5dd-x7gd7_default_b58c801c-de97-11e8-b1d5-02a12ea6f582_0
+b2c775b8f1fa        2f51903ee7a4                            "/usr/local/bin/mvn-…"   7 hours ago          Up 7 hours                                     k8s_javatestapp_app-f54857d6f-t78vp_default_116d4ca5-de61-11e8-b1d5-02a12ea6f582_0
+6f89b9ce298c        k8s.gcr.io/pause:3.1                    "/pause"                 7 hours ago          Up 7 hours                                     k8s_POD_app-f54857d6f-t78vp_default_116d4ca5-de61-11e8-b1d5-02a12ea6f582_0
+a2f9a493791e        367cdc8433a4                            "/coredns -conf /etc…"   7 hours ago          Up 7 hours                                     k8s_coredns_coredns-576cbf47c7-7fsd8_kube-system_026c0a66-de5b-11e8-b1d5-02a12ea6f582_0
+946a52823764        367cdc8433a4                            "/coredns -conf /etc…"   7 hours ago          Up 7 hours                                     k8s_coredns_coredns-576cbf47c7-xt69j_kube-system_0277749e-de5b-11e8-b1d5-02a12ea6f582_0
+93b52e5fbe99        k8s.gcr.io/pause:3.1                    "/pause"                 7 hours ago          Up 7 hours                                     k8s_POD_coredns-576cbf47c7-xt69j_kube-system_0277749e-de5b-11e8-b1d5-02a12ea6f582_0
+6d27f3186dc3        k8s.gcr.io/pause:3.1                    "/pause"                 7 hours ago          Up 7 hours                                     k8s_POD_coredns-576cbf47c7-7fsd8_kube-system_026c0a66-de5b-11e8-b1d5-02a12ea6f582_0
+3a863ac95e0f        818f76b131ca                            "/usr/local/bin/mvn-…"   7 hours ago          Exited (130) 7 hours ago                       javaprjct
+242b85aac63e        ef7ef6944306                            "mvn install"            7 hours ago          Exited (1) 7 hours ago                         stupefied_blackwell
+bd9f63d51772        k8s.gcr.io/kubernetes-dashboard-amd64   "/dashboard --insecu…"   8 hours ago          Up 8 hours                                     k8s_kubernetes-dashboard_kubernetes-dashboard-7c59fb947c-csspt_kube-system_234d8421-de57-11e8-b1d5-02a12ea6f582_0
+dcc45b9dc271        k8s.gcr.io/pause:3.1                    "/pause"                 8 hours ago          Up 8 hours                                     k8s_POD_kubernetes-dashboard-7c59fb947c-csspt_kube-system_234d8421-de57-11e8-b1d5-02a12ea6f582_0
+fcbcfe17e7fa        quay.io/calico/cni                      "/install-cni.sh"        8 hours ago          Up 8 hours                                     k8s_install-cni_calico-node-n2mqn_kube-system_1c43fa77-de57-11e8-b1d5-02a12ea6f582_0
+d86a5a6083d0        quay.io/calico/node                     "start_runit"            8 hours ago          Up 8 hours                                     k8s_calico-node_calico-node-n2mqn_kube-system_1c43fa77-de57-11e8-b1d5-02a12ea6f582_0
+60d7a36c5dc5        k8s.gcr.io/pause:3.1                    "/pause"                 8 hours ago          Up 8 hours                                     k8s_POD_calico-node-n2mqn_kube-system_1c43fa77-de57-11e8-b1d5-02a12ea6f582_0
+54ed3251457d        15e9da1ca195                            "/usr/local/bin/kube…"   8 hours ago          Up 8 hours                                     k8s_kube-proxy_kube-proxy-pwqmb_kube-system_06609344-de57-11e8-b1d5-02a12ea6f582_0
+0b582d462c68        k8s.gcr.io/pause:3.1                    "/pause"                 8 hours ago          Up 8 hours                                     k8s_POD_kube-proxy-pwqmb_kube-system_06609344-de57-11e8-b1d5-02a12ea6f582_0
+62553641f98e        51a9c329b7c5                            "kube-apiserver --au…"   8 hours ago          Up 8 hours                                     k8s_kube-apiserver_kube-apiserver-ip-172-31-19-134_kube-system_3ba174133c81a29a0a314b5ce1f0a92e_0
+ff7d49984c6c        15548c720a70                            "kube-controller-man…"   8 hours ago          Up 8 hours                                     k8s_kube-controller-manager_kube-controller-manager-ip-172-31-19-134_kube-system_2440a7bbd97082398c071e316a163016_0
+09c745e0389a        d6d57c76136c                            "kube-scheduler --ad…"   8 hours ago          Up 8 hours                                     k8s_kube-scheduler_kube-scheduler-ip-172-31-19-134_kube-system_ee7b1077c61516320f4273309e9b4690_0
+11327d0515c5        3cab8e1b9802                            "etcd --advertise-cl…"   8 hours ago          Up 8 hours                                     k8s_etcd_etcd-ip-172-31-19-134_kube-system_768452cd5f307d63c78fc6b117bde703_0
+8869e9827dec        k8s.gcr.io/pause:3.1                    "/pause"                 8 hours ago          Up 8 hours                                     k8s_POD_kube-scheduler-ip-172-31-19-134_kube-system_ee7b1077c61516320f4273309e9b4690_0
+655ed757582f        k8s.gcr.io/pause:3.1                    "/pause"                 8 hours ago          Up 8 hours                                     k8s_POD_kube-controller-manager-ip-172-31-19-134_kube-system_2440a7bbd97082398c071e316a163016_0
+496ce37d4680        k8s.gcr.io/pause:3.1                    "/pause"                 8 hours ago          Up 8 hours                                     k8s_POD_kube-apiserver-ip-172-31-19-134_kube-system_3ba174133c81a29a0a314b5ce1f0a92e_0
+2117ff3cae17        k8s.gcr.io/pause:3.1                    "/pause"                 8 hours ago          Up 8 hours                                     k8s_POD_etcd-ip-172-31-19-134_kube-system_768452cd5f307d63c78fc6b117bde703_0
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ sudo docker rm -f 9e6838b8827a
+9e6838b8827a
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ docker images[1@s[1@u[C[1@d[1@o[1@ 
+REPOSITORY                                         TAG                 IMAGE ID            CREATED             SIZE
+daksha006/train-schedule                           13                  8e41c39ee80e        7 minutes ago       401MB
+daksha006/train-schedule                           latest              8e41c39ee80e        7 minutes ago       401MB
+registry.hub.docker.com/daksha006/train-schedule   12                  8e41c39ee80e        7 minutes ago       401MB
+registry.hub.docker.com/daksha006/train-schedule   13                  8e41c39ee80e        7 minutes ago       401MB
+registry.hub.docker.com/daksha006/train-schedule   latest              8e41c39ee80e        7 minutes ago       401MB
+daksha006/javakapp                                 9                   cf1ff923c1a8        44 minutes ago      401MB
+daksha006/javakapp                                 latest              cf1ff923c1a8        44 minutes ago      401MB
+registry.hub.docker.com/daksha006/javakapp         9                   cf1ff923c1a8        44 minutes ago      401MB
+registry.hub.docker.com/daksha006/javakapp         latest              cf1ff923c1a8        44 minutes ago      401MB
+javatestapp                                        v2                  2f51903ee7a4        7 hours ago         401MB
+javaprjct                                          v1                  818f76b131ca        7 hours ago         355MB
+maven                                              3.5-jdk-8-alpine    fb4bb0d89941        8 days ago          119MB
+k8s.gcr.io/kube-proxy                              v1.12.2             15e9da1ca195        9 days ago          96.5MB
+k8s.gcr.io/kube-apiserver                          v1.12.2             51a9c329b7c5        9 days ago          194MB
+k8s.gcr.io/kube-controller-manager                 v1.12.2             15548c720a70        9 days ago          164MB
+k8s.gcr.io/kube-scheduler                          v1.12.2             d6d57c76136c        9 days ago          58.3MB
+k8s.gcr.io/etcd                                    3.2.24              3cab8e1b9802        6 weeks ago         220MB
+k8s.gcr.io/coredns                                 1.2.2               367cdc8433a4        2 months ago        39.2MB
+k8s.gcr.io/kubernetes-dashboard-amd64              v1.10.0             0dab2435c100        2 months ago        122MB
+quay.io/calico/node                                v3.1.3              7eca10056c8e        5 months ago        248MB
+quay.io/calico/cni                                 v3.1.3              9f355e076ea7        5 months ago        68.8MB
+k8s.gcr.io/pause                                   3.1                 da86e6ba6ca1        10 months ago       742kB
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ do[K[Ksudo docker i[Krmi -f 8e41c39ee80e
+Error response from daemon: conflict: unable to delete 8e41c39ee80e (cannot be forced) - image is being used by running container e2a5214ad5d0
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ 
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ 
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ 
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ vi Jenkinsfile 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H]11;?[1;36r[?12;25h[?12l[?25h[27m[23m[m[H[2J[?25l[36;1H"Jenkinsfile" 41L, 1212C[>c[2;1Hpipeline {
+    agent any
+    environment {[5;9HDOCKER_IMAGE_NAME = "daksha006/train-schedule"
+    }
+    stages {[8;9Hstage('Build Docker Image') {[9;13Hsteps {[10;17Hscript {[11;21Happ = docker.build(DOCKER_IMAGE_NAME)[12;21Happ.inside {[13;25Hsh 'echo Hello, World!'[14;21H}[15;17H}[16;13H}[17;9H}[18;9Hstage('Push Docker Image') {[19;13Hsteps {[20;17Hscript {[21;21Hdocker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {[22;25Happ.push("${env.BUILD_NUMBER}")[23;25Happ.push("latest")[24;24H}[25;17H}[26;13H}[27;9H}[28;9Hstage('DeployToProduction') {[29;13Hsteps {[30;17Hinput 'Deploy to Dev Environment?'[31;17Hmilestone(1)[32;17HkubernetesDeploy([33;21HcredentialsType: 'KubeConfig',[34;21HkubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config'],[35;21Hconfigs: 'train-schedule-kube.yml',[36;125H1,0-1[9CTop[1;1H[?12l[?25h[27m[23m[m[H[2J[?25l[2;1Hpipeline {
+    agent any
+    environment {[5;9HDOCKER_IMAGE_NAME = "daksha006/train-schedule"
+    }
+    stages {[8;9Hstage('Build Docker Image') {[9;13Hsteps {[10;17Hscript {[11;21Happ = docker.build(DOCKER_IMAGE_NAME)[12;21Happ.inside {[13;25Hsh 'echo Hello, World!'[14;21H}[15;17H}[16;13H}[17;9H}[18;9Hstage('Push Docker Image') {[19;13Hsteps {[20;17Hscript {[21;21Hdocker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {[22;25Happ.push("${env.BUILD_NUMBER}")[23;25Happ.push("latest")[24;24H}[25;17H}[26;13H}[27;9H}[28;9Hstage('DeployToProduction') {[29;13Hsteps {[30;17Hinput 'Deploy to Dev Environment?'[31;17Hmilestone(1)[32;17HkubernetesDeploy([33;21HcredentialsType: 'KubeConfig',[34;21HkubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config'],[35;21Hconfigs: 'train-schedule-kube.yml',[36;125H1,0-1[9CTop"Jenkinsfile" 41L, 1212C[1;1HP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12l[?25h[?25l[36;125H2,1  [2;1H[?12l[?25h[?25l[36;125H3[3;1H[?12l[?25h[?25l[36;125H4[4;1H[?12l[?25h[?25l[36;125H5[5;1H[?12l[?25h[?25l[36;127H2[5;2H[?12l[?25h[?25l[36;127H3[5;3H[?12l[?25h[?25l[36;127H4[5;4H[?12l[?25h[?25l[36;127H5[5;5H[?12l[?25h[?25l[36;127H6[5;6H[?12l[?25h[?25l[36;127H7[5;7H[?12l[?25h[?25l[36;127H8[5;8H[?12l[?25h[?25l[36;127H9[5;9H[?12l[?25h[?25l[36;127H10[5;10H[?12l[?25h[?25l[36;128H1[5;11H[?12l[?25h[?25l[36;128H2[5;12H[?12l[?25h[?25l[36;128H3[5;13H[?12l[?25h[?25l[36;128H4[5;14H[?12l[?25h[?25l[36;128H5[5;15H[?12l[?25h[?25l[36;128H6[5;16H[?12l[?25h[?25l[36;128H7[5;17H[?12l[?25h[?25l[36;128H8[5;18H[?12l[?25h[?25l[36;128H9[5;19H[?12l[?25h[?25l[36;127H20[5;20H[?12l[?25h[?25l[36;128H1[5;21H[?12l[?25h[?25l[36;128H2[5;22H[?12l[?25h[?25l[36;128H3[5;23H[?12l[?25h[?25l[36;128H4[5;24H[?12l[?25h[?25l[36;128H5[5;25H[?12l[?25h[?25l[36;128H6[5;26H[?12l[?25h[?25l[36;128H7[5;27H[?12l[?25h[?25l[36;128H8[5;28H[?12l[?25h[?25l[36;128H9[5;29H[?12l[?25h[?25l[36;127H30[5;30H[?12l[?25h[?25l[36;128H1[5;31H[?12l[?25h[?25l[36;128H2[5;32H[?12l[?25h[?25l[36;128H3[5;33H[?12l[?25h[?25l[36;128H4[5;34H[?12l[?25h[?25l[36;128H5[5;35H[?12l[?25h[?25l[36;128H6[5;36H[?12l[?25h[?25l[36;128H7[5;37H[?12l[?25h[?25l[36;128H8[5;38H[?12l[?25h[?25l[36;128H9[5;39H[?12l[?25h[?25l[36;127H40[5;40H[?12l[?25h[?25l[36;128H1[5;41H[?12l[?25h[?25l[36;128H2[5;42H[?12l[?25h[?25l[36;128H3[5;43H[?12l[?25h[?25l[36;128H4[5;44H[?12l[?25h[?25l[36;128H5[5;45H[?12l[?25h[?25l[36;128H6[5;46H[?12l[?25h[?25l[36;128H7[5;47H[?12l[?25h[?25l[36;128H8[5;48H[?12l[?25h[?25l[36;128H9[5;49H[?12l[?25h[?25l[36;127H50[5;50H[?12l[?25h[?25l[36;128H1[5;51H[?12l[?25h[?25l[36;128H2[5;52H[?12l[?25h[?25l[36;128H3[5;53H[?12l[?25h[?25l[36;128H4[5;54H[?12l[?25h[?25l[36;1H[1m-- INSERT --[m[36;13H[K[36;125H5,54[10CTop[5;54H[?12l[?25h[?25l"[5;54H[K[36;128H3[5;53H[?12l[?25h[?25l"[5;53H[K[36;128H2[5;52H[?12l[?25h[?25l"[5;52H[K[36;128H1[5;51H[?12l[?25h[?25l"[5;51H[K[36;128H0[5;50H[?12l[?25h[?25l"[5;49H[K[36;127H48[5;48H[?12l[?25h[?25l"[5;48H[K[36;128H7[5;47H[?12l[?25h[?25l"[5;47H[K[36;128H6[5;46H[?12l[?25h[?25l"[5;46H[K[36;128H5[5;45H[?12l[?25h[?25l"[5;45H[K[36;128H4[5;44H[?12l[?25h[?25l"[5;44H[K[36;128H3[5;43H[?12l[?25h[?25l"[5;43H[K[36;128H2[5;42H[?12l[?25h[?25l"[5;42H[K[36;128H1[5;41H[?12l[?25h[?25l"[5;41H[K[36;128H0[5;40H[?12l[?25h[?25lj"[36;128H1[5;41H[?12l[?25h[?25la"[36;128H2[5;42H[?12l[?25h[?25lv"[36;128H3[5;43H[?12l[?25h[?25la"[36;128H4[5;44H[?12l[?25h[?25lp"[36;128H5[5;45H[?12l[?25h[?25lr"[36;128H6[5;46H[?12l[?25h[?25lj"[36;128H7[5;47H[?12l[?25h[?25lc"[36;128H8[5;48H[?12l[?25h[?25lta"[36;127H50[5;50H[?12l[?25h[?25lpp"[36;128H2[5;52H[?12l[?25h[36;1H[K[?25l[36;125H5,51[10CTop[5;51H[?12l[?25h[?25l[36;125H[K[36;1H:wq[?12l[?25h![?25l[?12l[?25h[?25l"Jenkinsfile" 41L, 1210C written
+[?1l>[?12l[?25h[?1049l]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ sudo git add .
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ sudo git commit -m "changes6"
+[master df7ac52] changes6
+ Committer: root <root@ip-172-31-19-134.us-west-2.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identi5l[36;128H6[5;26H[?12l[?25h[?25l[36;128H7[5;27H[?12l[?25h[?25l[36;128H8[5;28H[?12l[?25h[?25l[36;128H9[5;29H[?12l[?25h[?25l[36;127H30[5;30H[?12l[?25h[?25l[36;128H1[5;31H[?12l[?25h[?25l[36;128H2[5;32H[?12l[?25h[?25l[36;128H3[5;33H[?12l[?25h[?25l[36;128H4[5;34H[?12l[?25h[?25l[36;128H5[5;35H[?12l[?25h[?25l[36;128H6[5;36H[?12l[?25h[?25l[36;128H7[5;37H[?12l[?25h[?25l[36;128H8[5;38H[?12l[?25h[?25l[36;128H9[5;39H[?12l[?25h[?25l[36;127H40[5;40H[?12l[?25h[?25l[36;128H1[5;41H[?12l[?25h[?25l[36;128H2[5;42H[?12l[?25h[?25l[36;128H3[5;43H[?12l[?25h[?25l[36;128H4[5;44H[?12l[?25h[?25l[36;128H5[5;45H[?12l[?25h[?25l[36;128H6[5;46H[?12l[?25h[?25l[36;128H7[5;47H[?12l[?25h[?25l[36;128H8[5;48H[?12l[?25h[?25l[36;128H9[5;49H[?12l[?25h[?25l[36;127H50[5;50H[?12l[?25h[?25l[36;128H1[5;51H[?12l[?25h[?25l[36;128H2[5;52H[?12l[?25h[?25l[36;128H3[5;53H[?12l[?25h[?25l[36;128H4[5;54H[?12l[?25h[?25l[36;1H[1m-- INSERT --[m[36;13H[K[36;125H5,54[10CTop[5;54H[?12l[?25h[?25l"[5;54H[K[36;128H3[5;53H[?12l[?25h[?25l"[5;53H[K[36;128H2[5;52H[?12l[?25h[?25l"[5;52H[K[36;128H1[5;51H[?12l[?25h[?25l"[5;51H[K[36;128H0[5;50H[?12l[?25h[?25l"[5;49H[K[36;127H48[5;48H[?12l[?25h[?25l"[5;48H[K[36;128H7[5;47H[?12l[?25h[?25l"[5;47H[K[36;128H6[5;46H[?12l[?25h[?25l"[5;46H[K[36;128H5[5;45H[?12l[?25h[?25l"[5;45H[K[36;128H4[5;44H[?12l[?25h[?25l"[5;44H[K[36;128H3[5;43H[?12l[?25h[?25l"[5;43H[K[36;128H2[5;42H[?12l[?25h[?25l"[5;42H[K[36;128H1[5;41H[?12l[?25h[?25l"[5;41H[K[36;128H0[5;40H[?12l[?25h[?25lj"[36;128H1[5;41H[?12l[?25h[?25la"[36;128H2[5;42H[?12l[?25h[?25lv"[36;128H3[5;43H[?12l[?25h[?25la"[36;128H4[5;44H[?12l[?25h[?25lp"[36;128H5[5;45H[?12l[?25h[?25lr"[36;128H6[5;46H[?12l[?25h[?25lj"[36;128H7[5;47H[?12l[?25h[?25lc"[36;128H8[5;48H[?12l[?25h[?25lta"[36;127H50[5;50H[?12l[?25h[?25lpp"[36;128H2[5;52H[?12l[?25h[36;1H[K[?25l[36;125H5,51[10CTop[5;51H[?12l[?25h[?25l[36;125H[K[36;1H:wq[?12l[?25h![?25l[?12l[?25h[?25l"Jenkinsfile" 41L, 1210C written
+[?1l>[?12l[?25h[?1049l]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ sudo git add .
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ sudo git commit -m "changes6"
+[master df7ac52] changes6
+ Committer: root <root@ip-172-31-19-134.us-west-2.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 177 insertions(+), 1 deletion(-)
+ create mode 100644 {
+]0;ubuntu@ip-172-31-19-134: ~/librarymanagment[01;32mubuntu@ip-172-31-19-134[00m:[01;34m~/librarymanagment[00m$ sudo git push origin master
+Username for 'https://github.com': Dakshayani006
+Password for 'https://Dakshayani006@github.com': 
+Counting objects: 4, done.
+Delta compression using up to 2 threads.
+Compressing objects:  25% (1/4)   Compressing objects:  50% (2/4)   Compressing objects:  75% (3/4)   Compressing objects: 100% (4/4)   Compressing objects: 100% (4/4), done.
+Writing objects:  25% (1/4)   Writing objects:  50% (2/4)   Writing objects:  75% (3/4)   Writing objects: 100% (4/4)   Writing objects: 100% (4/4), 3.55 KiB | 0 bytes/s, done.
+Total 4 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/2)   [Kremote: Resolving deltas:  50% (1/2)   [Kremote: Resolving deltas: 100% (2/2)   [Kremote: Resolving deltas: 100% (2/2), completed with 2 local objects.[K
+To ht

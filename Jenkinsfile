@@ -2,7 +2,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE_NAME = "daksha006/javaprjct"
+        DOCKER_IMAGE_NAME = "daksha006/javaprjctapp"
     }
     stages {
         stage('Build Docker Image') {
@@ -41,7 +41,7 @@ pipeline {
       stage('RollBack') {
           steps {
              script {
-                sh 'kubectl rollout undo deployment/test'
+                sh 'kubectl rollout undo deployment/test --to-revision 3'
          }
        }
      }

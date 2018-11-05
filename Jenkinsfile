@@ -1,40 +1,24 @@
 
 pipeline {
     agent any
-    environment {
-        DOCKER_IMAGE_NAME = "daksha006/javaprjctapp1"
-    }
+
     stages {
-        stage('Build Docker Image') {
+        stage('Build') {
             steps {
-                script {
-                    app = docker.build(DOCKER_IMAGE_NAME)
-                    app.inside {
-                        sh 'echo Hello, World!'
-                    }
-                }
+                echo 'Building..'
+                sh 'docker build -t javatestapp:v2 .'
+                sh 'kubectl create deployment app --image=javatestapp:v2'
+              sh 'sudo kubectl expose deployment app --type=LoadBalancer --port=8080'
             }
         }
-        stage('Push Docker Image') {
+        stage('Test') {
             steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
-                        app.push("${env.BUILD_NUMBER}")
-                        app.push("latest")
-                       }
-                }
+                echo 'Testing..'
             }
         }
-        stage('DeployToProduction') {
+        stage('Deploy') {
             steps {
-                input 'Deploy to Dev Environment?'
-                milestone(1)
-                kubernetesDeploy(
-                    credentialsType: 'KubeConfig',
-                    kubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config'],
-                    configs: 'train-schedule-kube.yml',
-                    enableConfigSubstitution: true
-                )
+                echo 'Deploying....'
             }
         }
     }
